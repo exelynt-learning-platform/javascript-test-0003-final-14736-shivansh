@@ -1,26 +1,25 @@
-// Alternating 0/1 Triangle Pattern
+/**
+ * Prints an alternating 0/1 triangle pattern
+ * @param {number} rows - Number of rows for the triangle
+ */
 
-let rows = 6;
-
-for (let i = 1; i <= rows; i++) {
-
-  let num;
-
-  // odd row starts with 1, even row starts with 0
-  if (i % 2 === 1) {
-    num = 1;
-  } else {
-    num = 0;
+function printAlternatingBinaryTriangle(rows) {
+  if (!Number.isInteger(rows) || rows < 1) {
+    console.error("Invalid input: rows must be a positive integer.");
+    return;
   }
 
-  let row = "";
+  for (let row = 1; row <= rows; row++) {
+    let line = "";
 
-  for (let j = 1; j <= i; j++) {
-    row += num + " ";
+    for (let col = 1; col <= row; col++) {
+      const value = (row + col) % 2 === 0 ? 1 : 0;
+      line += value + " ";
+    }
 
-    // switch between 0 and 1
-    num = num === 1 ? 0 : 1;
+    console.log(line.trim());
   }
-
-  console.log(row);
 }
+
+// Example usage
+printAlternatingBinaryTriangle(6);
