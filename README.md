@@ -1,19 +1,18 @@
-# javascript-test-0003-final-14736-shivansh
-Final Project Assignment - This repository contains the complete final project code and documentation.
+# Alternating 0/1 Triangle Pattern in JavaScript
 
+This project demonstrates how to generate an **Alternating Binary Triangle Pattern** using JavaScript.
 
-# Alternating 0/1 Triangle Pattern (JavaScript)
+The program prints a triangle where **0 and 1 alternate based on the position of the row and column**. It is a common **logic-building problem asked in coding assessments and interviews**.
 
-## Overview
+---
 
-This JavaScript program prints a **triangular pattern of alternating 0s and 1s**.
-Each row begins with a number determined by whether the row number is **odd or even**, and the values alternate between **0 and 1** across the row.
+## 📌 Problem Statement
 
-This program demonstrates the use of **nested loops, conditional logic, and pattern generation** in JavaScript.
+Write a program that prints an **Alternating 0/1 Triangle Pattern** for a given number of rows.
 
-Example output for `rows = 6`:
+Example when `rows = 6`:
 
-```id="q7l9ux"
+```
 1
 0 1
 1 0 1
@@ -24,140 +23,105 @@ Example output for `rows = 6`:
 
 ---
 
-## How the Program Works
+## 🧠 Logic Used
 
-### 1. Function Definition
+1. The triangle contains **N rows**.
+2. Each row prints numbers from **column 1 to the row number**.
+3. The value of each position depends on the **sum of the row and column index**.
 
-The function `printAlternatingPattern()` prints the pattern.
-The parameter `rows` controls how many rows will be displayed.
+Rule:
 
-```javascript id="t7l0nh"
-function printAlternatingPattern(rows = 6)
-```
+* If `(row + column) % 2 === 0` → print **1**
+* If `(row + column) % 2 !== 0` → print **0**
 
-If no value is passed, it prints **6 rows by default**.
-
----
-
-### 2. Outer Loop (Rows)
-
-```javascript id="kp3ydm"
-for (let i = 1; i <= rows; i++)
-```
-
-This loop controls the **number of rows** in the pattern.
+This approach removes the need to manually toggle values and makes the logic **simpler and more efficient**.
 
 ---
 
-### 3. Determine Starting Number
+## 💻 Implementation
 
-```javascript id="4ymt0n"
-let start = (i % 2 === 1) ? 1 : 0;
-```
+```javascript
+/**
+ * Prints an alternating 0/1 triangle pattern
+ * @param {number} rows - Number of rows for the triangle
+ */
 
-* If the row number is **odd**, the row starts with **1**
-* If the row number is **even**, the row starts with **0**
+function printAlternatingBinaryTriangle(rows) {
+  if (!Number.isInteger(rows) || rows < 1) {
+    console.error("Invalid input: rows must be a positive integer.");
+    return;
+  }
 
----
+  for (let row = 1; row <= rows; row++) {
+    let line = "";
 
-### 4. Inner Loop (Numbers in Row)
-
-```javascript id="kg0r7q"
-for (let j = 0; j < i; j++)
-```
-
-This loop builds the numbers for the current row.
-
----
-
-### 5. Alternating Logic
-
-```javascript id="f1n5h9"
-line += (start + j) % 2;
-```
-
-This expression flips the number between **0 and 1**.
-
-Example:
-
-| Start | j | Output |
-| ----- | - | ------ |
-| 1     | 0 | 1      |
-| 1     | 1 | 0      |
-| 1     | 2 | 1      |
-
----
-
-### 6. Space Between Numbers
-
-```javascript id="vsc6xq"
-if (j < i - 1) line += ' ';
-```
-
-Adds a space between numbers but avoids a trailing space at the end.
-
----
-
-### 7. Print the Row
-
-```javascript id="p6u9er"
-console.log(line);
-```
-
-Outputs the completed row.
-
----
-
-## Code
-
-```javascript id="c0jzfr"
-// Program to print the alternating 0/1 triangular pattern
-function printAlternatingPattern(rows = 6) {
-    for (let i = 1; i <= rows; i++) {
-        // Determine the starting number: 1 for odd rows, 0 for even rows
-        let start = (i % 2 === 1) ? 1 : 0;
-        let line = '';
-        
-        // Build the row by alternating the value
-        for (let j = 0; j < i; j++) {
-            // Append current value (alternates based on j)
-            line += (start + j) % 2;
-            if (j < i - 1) line += ' ';
-        }
-        
-        console.log(line);
+    for (let col = 1; col <= row; col++) {
+      const value = (row + col) % 2 === 0 ? 1 : 0;
+      line += value + " ";
     }
+
+    console.log(line.trim());
+  }
 }
 
-// Execute the function
-printAlternatingPattern();
+// Example
+printAlternatingBinaryTriangle(6);
 ```
 
 ---
 
-## How to Run the Program
+## ⚙️ How to Run
 
-1. Install **Node.js**
-2. Save the file as `alternatingPattern.js`
-3. Open the terminal in the project folder
-4. Run the command:
+1. Install **Node.js** on your system.
+2. Save the code in a file called:
 
-```id="3u0e6m"
-node alternatingPattern.js
+```
+binaryTriangle.js
+```
+
+3. Run the program using:
+
+```bash
+node binaryTriangle.js
 ```
 
 ---
 
-## Concepts Used
+## 📂 Project Structure
 
-* Nested loops
-* Conditional statements
-* Pattern printing logic
-* JavaScript functions
-* Console output
+```
+alternating-binary-triangle
+│
+├── binaryTriangle.js
+└── README.md
+```
 
 ---
 
-## Author
+## 🚀 Features
 
-This program was created as a **practice exercise for understanding loops and pattern generation in JavaScript**.
+* Clean and readable JavaScript implementation
+* Input validation
+* Reusable function
+* Efficient mathematical logic
+* Beginner-friendly explanation
+
+---
+
+## 📚 Concepts Covered
+
+* JavaScript Loops
+* Conditional Logic
+* Pattern Printing
+* Mathematical Pattern Optimization
+
+---
+
+## 👨‍💻 Author
+
+**Shivansh Dubey**
+
+B.Tech CSE
+
+Technologies:
+Java • JavaScript • React • MySQL
